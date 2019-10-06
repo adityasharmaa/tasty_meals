@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+
 import '../widgets/category_grid_item.dart';
-import 'package:meals_recipe/data.dart';
+import '../data.dart';
 
 class CategoriesScreen extends StatelessWidget {
   @override
@@ -14,7 +15,8 @@ class CategoriesScreen extends StatelessWidget {
           maxCrossAxisExtent: 200,
           childAspectRatio: 3 / 2,
           crossAxisSpacing: 15,
-          mainAxisSpacing: 15),
+          mainAxisSpacing: 15
+      ),
     );
   }
 }

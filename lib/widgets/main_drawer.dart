@@ -41,10 +41,10 @@ class MainDrawer extends StatelessWidget {
             ),
           ),
           _buildListTile("Categories", Icons.category, () {
-            Navigator.of(context).pushNamed("/");
+            Navigator.of(context).pushReplacementNamed("/");
           }),
           _buildListTile("Filters", Icons.settings, () {
-            Navigator.of(context).pushNamed(FiltersScreen.route);
+            Navigator.of(context).pushReplacementNamed(FiltersScreen.route);
           }),
         ],
       ),

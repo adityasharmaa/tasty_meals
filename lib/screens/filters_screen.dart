@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../widgets/main_drawer.dart';
+
 class FiltersScreen extends StatelessWidget {
 
   static const route = "/filters_screen";
@@ -13,6 +15,7 @@ class FiltersScreen extends StatelessWidget {
       body: Center(
         child: Text("Filters screen"),
       ),
+      drawer: MainDrawer(),
     );
   }
 }
