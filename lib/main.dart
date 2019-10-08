@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:meals_recipe/models/filters.dart';
+import 'package:meals_recipe/models/meal.dart';
 
 import './screens/filters_screen.dart';
 import './screens/meal_details_screen.dart';
@@ -15,12 +16,25 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-
   Filters _filters = Filters(false, false, false, false);
+  List<Meal> _favouriteMeals = [];
 
-  void _updateFilters(Filters filters){
+  void _updateFilters(Filters filters) {
     setState(() {
       _filters = filters;
+    });
+  }
+
+  bool _isFavourite(Meal meal) {
+    return _favouriteMeals.contains(meal);
+  }
+
+  void _toggleFavourite(Meal meal) {
+    setState(() {
+      if (_favouriteMeals.contains(meal))
+        _favouriteMeals.remove(meal);
+      else
+        _favouriteMeals.add(meal);
     });
   }
 
@@ -46,11 +60,12 @@ class _MyAppState extends State<MyApp> {
                   fontWeight: FontWeight.bold,
                 ),
               )),
-      home: TabsScreen(),
+      home: TabsScreen(_favouriteMeals),
       routes: {
         CategoryMealsScreen.route: (_) => CategoryMealsScreen(_filters),
-        MealDetailsScreen.route : (_) => MealDetailsScreen(),
-        FiltersScreen.route : (_) => FiltersScreen(_filters,_updateFilters),
+        MealDetailsScreen.route: (_) =>
+            MealDetailsScreen(_isFavourite, _toggleFavourite),
+        FiltersScreen.route: (_) => FiltersScreen(_filters, _updateFilters),
       },
     );
   }

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:meals_recipe/models/filters.dart';
 
+import '../models/filters.dart';
 import '../data.dart';
 import '../models/meal.dart';
 import '../widgets/meal_item.dart';
@@ -54,14 +54,6 @@ class _CategoryMealsScreenState extends State<CategoryMealsScreen> {
     _isMealsListLoaded = true;
   }
 
-  void _deleteMealItem(Meal meal) {
-    setState(() {
-      _mealsList.removeWhere((subjectMeal) {
-        return subjectMeal.id == meal.id;
-      });
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -70,7 +62,7 @@ class _CategoryMealsScreenState extends State<CategoryMealsScreen> {
         ),
         body: ListView.builder(
           itemBuilder: (ctx, index) {
-            return MealItem(_mealsList[index], _deleteMealItem);
+            return MealItem(_mealsList[index]);
           },
           itemCount: _mealsList.length,
         ));

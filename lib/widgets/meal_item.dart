@@ -4,18 +4,14 @@ import 'package:meals_recipe/screens/meal_details_screen.dart';
 
 class MealItem extends StatelessWidget {
   final Meal _meal;
-  final Function _deleteMealItem;
 
-  MealItem(this._meal,this._deleteMealItem);
+  MealItem(this._meal);
 
   void showMealItem(BuildContext context) {
     Navigator.of(context).pushNamed(
       MealDetailsScreen.route,
       arguments: _meal,
-    ).then((_meal){
-      if(_meal != null)
-        _deleteMealItem(_meal);
-    });
+    );
   }
 
   String get complexityText{
